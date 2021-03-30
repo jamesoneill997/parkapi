@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "5854e290-0c44-45ae-8ba4-fdb8a8d12214",
+		"name": "Duplicate User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createUser Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"firstName\" : \"James\",\n            \"surname\" : \"O'Neill\",\n            \"type\" : \"user\",\n            \"email\" : \"jamesoneill997@gmail.com\",\n            \"password\" : \"test3234\",\n            \"accountBalance\" : 0,\n            \"vehicles\" : {\"vehicles\":[{\n                \"Registration\":\"32423\"\n            }]}\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"firstName\" : \"James\",\n            \"surname\" : \"O'Neill\",\n            \"type\" : \"user\",\n            \"email\" : \"jamesoneill997@gmail.com\",\n            \"password\" : \"test3234\",\n            \"accountBalance\" : 0,\n            \"vehicles\" : {\"vehicles\":[{\n                \"Registration\":\"32423\"\n            }]}\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

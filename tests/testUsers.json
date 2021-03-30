@@ -1,0 +1,39 @@
+{
+    "users":[
+        {
+            "firstName" : "James",
+            "surname" : "O'Neill",
+            "type" : "user",
+            "email" : "jamesoneill997@gmail.com",
+            "password" : "test3234",
+            "accountBalance" : 0,
+            "vehicles" : {"vehicles":[{
+                "Registration":"32423"
+            }]}
+        },
+        {
+            "firstName" : "Paul",
+            "surname" : "Davin",
+            "type" : "admin",
+            "email" : "paul.davin3@gmail.com",
+            "password" : "test3234",
+            "AccountBalance" : 0,
+            "CarParks" : [{
+                "name":"DCU CarPark",
+                "namespace":"dcucarpark",
+                "location": {
+                    "street": "Ballymun Road",
+                    "town": "Glasnevin",
+                    "County": "Dublin",
+                    "Postcode": "D091234"
+                },
+                "rules" : {
+                    "cost" : 1.20    
+                }
+
+            }]
+        }
+
+    ]
+    
+}

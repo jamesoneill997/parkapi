@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "1bcd1f32-e4d5-4a9e-949e-179b2f315d91",
+		"name": "Full carpark",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"firstName\" : \"Paul\",\n            \"surname\" : \"Davin\",\n            \"type\" : \"admin\",\n            \"email\" : \"paul.davin3@gmail.com\",\n            \"password\" : \"test3234\",\n            \"AccountBalance\" : 0,\n            \"CarParks\" : [{\n                \"name\":\"DCU CarPark\",\n                \"namespace\":\"dcucarpark\",\n                \"location\": {\n                    \"street\": \"Ballymun Road\",\n                    \"town\": \"Glasnevin\",\n                    \"County\": \"Dublin\",\n                    \"Postcode\": \"D091234\"\n                },\n                \"rules\" : {\n                    \"cost\" : 1.20    \n                }\n\n            }]\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check carpark added to users collection",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJSON;",
+							"var expect = require('chai').expect;",
+							"try {",
+							"   responseJSON = JSON.parse(responseBody);",
+							"   tests['response is valid JSON'] = true;",
+							"   tests['response']",
+							"}",
+							"catch (e) {",
+							"   responseJSON = {};",
+							"   tests['response is valid JSON'] = false;",
+							"}",
+							"",
+							"pm.test('Carpark added to users collection', function () {",
+							"  expect(_.get(responseJSON, 'carparks.0.namespace')).eql(\"dcucarpark\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check carpark added to carparks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJSON;",
+							"var expect = require('chai').expect;",
+							"try {",
+							"   responseJSON = JSON.parse(responseBody);",
+							"   tests['response is valid JSON'] = true;",
+							"   tests['response']",
+							"}",
+							"catch (e) {",
+							"   responseJSON = {};",
+							"   tests['response is valid JSON'] = false;",
+							"}",
+							"",
+							"pm.test('Carpark added to carparks collection', function () {",
+							"  expect(_.get(responseJSON, '0.namespace')).eql(\"dcucarpark\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/carparks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carparks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete carpark",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"namespace\":\"dcucarpark\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/carparks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carparks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check carpark deleted in users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJSON;",
+							"var expect = require('chai').expect;",
+							"try {",
+							"   responseJSON = JSON.parse(responseBody);",
+							"   tests['response is valid JSON'] = true;",
+							"   tests['response']",
+							"}",
+							"catch (e) {",
+							"   responseJSON = {};",
+							"   tests['response is valid JSON'] = false;",
+							"}",
+							"",
+							"pm.test('Carpark not present', function () {",
+							"  expect(_.get(responseJSON, 'carparks.0')).eql(undefined);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check deleted in carparks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJSON;",
+							"var expect = require('chai').expect;",
+							"try {",
+							"   responseJSON = JSON.parse(responseBody);",
+							"",
+							"}",
+							"catch (e) {",
+							"   responseJSON = {};",
+							"}",
+							"",
+							"pm.test('Carpark added to carparks collection', function () {",
+							"  expect(_.get(responseJSON)).eql(undefined);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/carparks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carparks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add carpark",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"name\":\"New DCU Carpark\",\n                \"namespace\":\"newdcucarpark\",\n                \"location\": {\n                    \"street\": \"Ballymun Road\",\n                    \"town\": \"Glasnevin\",\n                    \"County\": \"Dublin\",\n                    \"Postcode\": \"D091234\"\n                },\n                \"rules\" : {\n                    \"cost\" : 1.20    \n                }\n\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/carparks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carparks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update carpark",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"name\":\"Finglas CarPark\",\n                \"namespace\":\"newdcucarpark\",\n                \"location\": {\n                    \"street\": \"Finglas Road\",\n                    \"town\": \"Finglas\",\n                    \"County\": \"Dublin\",\n                    \"Postcode\": \"D091234\"\n                },\n                \"rules\" : {\n                    \"cost\" : 1.20    \n                }\n\n            }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/carparks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carparks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check carpark added to user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJSON;",
+							"var expect = require('chai').expect;",
+							"try {",
+							"   responseJSON = JSON.parse(responseBody);",
+							"   tests['response is valid JSON'] = true;",
+							"   tests['response']",
+							"}",
+							"catch (e) {",
+							"   responseJSON = {};",
+							"   tests['response is valid JSON'] = false;",
+							"}",
+							"",
+							"pm.test('Carpark added to user', function () {",
+							"  expect(_.get(responseJSON, 'carparks.0.namespace')).eql(\"newdcucarpark\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check carpark added to carparks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var responseJSON;",
+							"var expect = require('chai').expect;",
+							"try {",
+							"   responseJSON = JSON.parse(responseBody);",
+							"   tests['response is valid JSON'] = true;",
+							"   tests['response']",
+							"}",
+							"catch (e) {",
+							"   responseJSON = {};",
+							"   tests['response is valid JSON'] = false;",
+							"}",
+							"",
+							"pm.test('Carpark added to carparks collection', function () {",
+							"  expect(_.get(responseJSON, '0.namespace')).eql(\"newdcucarpark\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/carparks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carparks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
