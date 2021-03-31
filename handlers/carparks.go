@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/jamesoneill997/parkapi/cors"
 	"github.com/jamesoneill997/parkapi/db"
 	"github.com/jamesoneill997/parkapi/initialise"
 	"github.com/jamesoneill997/parkapi/logs"
@@ -32,6 +33,10 @@ func NewCarPark(ctx context.Context, l *log.Logger, client *mongo.Client) *CarPa
 }
 
 func (user *CarPark) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
+	//allow CORS
+	cors.SetupCORS(&w, r)
+
 	switch r.Method {
 	case http.MethodGet:
 		claims, err := middleware.GetAuth(r)

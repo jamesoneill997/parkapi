@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/jamesoneill997/parkapi/cors"
 	"github.com/jamesoneill997/parkapi/db"
 	"github.com/jamesoneill997/parkapi/logs"
 	"github.com/jamesoneill997/parkapi/middleware"
@@ -32,6 +33,9 @@ func NewLogin(ctx context.Context, l *log.Logger, client *mongo.Client) *Login {
 func (user *Login) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	//struct to store login credentials
 	var details structs.LoginCreds
+
+	//allow CORS
+	cors.SetupCORS(&w, r)
 
 	//handle requests
 	switch r.Method {

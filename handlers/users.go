@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/jamesoneill997/parkapi/cors"
 	"github.com/jamesoneill997/parkapi/db"
 	"github.com/jamesoneill997/parkapi/initialise"
 	"github.com/jamesoneill997/parkapi/logs"
@@ -32,6 +33,10 @@ func NewUser(l *log.Logger) *User {
 
 //UsersHandler function will handle calls to the users endpoint
 func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
+	//allow CORS
+	cors.SetupCORS(&w, r)
+
 	var actor structs.User
 	switch r.Method {
 	//handles get requests

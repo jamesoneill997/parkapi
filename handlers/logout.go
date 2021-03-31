@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/jamesoneill997/parkapi/cors"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -22,6 +23,10 @@ func NewLogout(ctx context.Context, l *log.Logger, client *mongo.Client) *Logout
 }
 
 func (user *Logout) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+
+	//allow CORS
+	cors.SetupCORS(&w, r)
+
 	switch r.Method {
 	//api should only accept POST request for logout
 	case http.MethodPost:
