@@ -39,6 +39,12 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	var actor structs.User
 	switch r.Method {
+
+	//handling CORS
+	case http.MethodOptions:
+		w.WriteHeader(200)
+		return
+
 	//handles get requests
 	case http.MethodGet:
 		//get authorisation
