@@ -16,6 +16,7 @@ import (
 
 var client *mongo.Client
 var ctx context.Context
+var port = os.Getenv("PORT")
 
 func init() {
 	client = initialise.Client
@@ -43,7 +44,7 @@ func main() {
 
 	//server config
 	server := &http.Server{
-		Addr:         ":8080",
+		Addr:         port,
 		Handler:      sm,
 		IdleTimeout:  120 * time.Second,
 		ReadTimeout:  2 * time.Second,
