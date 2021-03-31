@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -16,7 +17,7 @@ import (
 
 var client *mongo.Client
 var ctx context.Context
-var port = os.Getenv("PORT")
+var port = fmt.Sprintf(":%s", os.Getenv("PORT"))
 
 func init() {
 	client = initialise.Client
