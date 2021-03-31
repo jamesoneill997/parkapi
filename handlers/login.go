@@ -91,7 +91,7 @@ func (user *Login) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//set cookie
-		middleware.SetCookie("ParkAIToken", token, time.Now().Add(15*time.Minute), w)
+		middleware.SetCookie("ParkAIToken", token, time.Now().Add(48*time.Hour), w)
 		w.WriteHeader(http.StatusOK)
 		w.Write([]byte("Credentials are correct"))
 
