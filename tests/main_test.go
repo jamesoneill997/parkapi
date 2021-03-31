@@ -6,8 +6,9 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"parkapi/structs"
 	"testing"
+
+	"github.com/jamesoneill997/parkapi/structs"
 )
 
 var r *http.Request

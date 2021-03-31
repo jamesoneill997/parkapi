@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"parkapi/handlers"
-	"parkapi/initialise"
 	"time"
+
+	"github.com/jamesoneill997/parkapi/handlers"
+	"github.com/jamesoneill997/parkapi/initialise"
 
 	"go.mongodb.org/mongo-driver/mongo"
 )

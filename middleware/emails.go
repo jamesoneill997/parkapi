@@ -3,8 +3,9 @@ package middleware
 import (
 	"fmt"
 	"os"
-	"parkapi/logs"
-	"parkapi/structs"
+
+	"github.com/jamesoneill997/parkapi/logs"
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"

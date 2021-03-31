@@ -3,8 +3,9 @@ package payments
 import (
 	"fmt"
 	"os"
-	"parkapi/structs"
 	"time"
+
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"github.com/stripe/stripe-go"
 	"github.com/stripe/stripe-go/charge"

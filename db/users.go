@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"parkapi/structs"
 	"time"
+
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"

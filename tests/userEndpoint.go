@@ -7,9 +7,10 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"parkapi/handlers"
-	"parkapi/structs"
 	"testing"
+
+	"github.com/jamesoneill997/parkapi/handlers"
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"github.com/stretchr/testify/assert"
 )

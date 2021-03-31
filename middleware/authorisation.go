@@ -4,7 +4,8 @@ import (
 	"errors"
 	"net/http"
 	"os"
-	"parkapi/structs"
+
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"github.com/dgrijalva/jwt-go"
 )

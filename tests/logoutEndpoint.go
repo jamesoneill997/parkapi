@@ -5,9 +5,10 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"parkapi/handlers"
-	"parkapi/initialise"
 	"testing"
+
+	"github.com/jamesoneill997/parkapi/handlers"
+	"github.com/jamesoneill997/parkapi/initialise"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -7,12 +7,13 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"parkapi/db"
-	"parkapi/initialise"
-	"parkapi/logs"
-	"parkapi/middleware"
-	"parkapi/structs"
 	"time"
+
+	"github.com/jamesoneill997/parkapi/db"
+	"github.com/jamesoneill997/parkapi/initialise"
+	"github.com/jamesoneill997/parkapi/logs"
+	"github.com/jamesoneill997/parkapi/middleware"
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"

@@ -3,9 +3,10 @@ package db
 import (
 	"context"
 	"fmt"
-	"parkapi/logs"
-	"parkapi/structs"
 	"time"
+
+	"github.com/jamesoneill997/parkapi/logs"
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"

@@ -3,8 +3,9 @@ package middleware
 import (
 	"net/http"
 	"os"
-	"parkapi/structs"
 	"time"
+
+	"github.com/jamesoneill997/parkapi/structs"
 
 	"github.com/dgrijalva/jwt-go"
 )
