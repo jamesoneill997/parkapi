@@ -28,6 +28,12 @@ func (user *Logout) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	cors.SetupCORS(&w, r)
 
 	switch r.Method {
+
+	//handling CORS
+	case http.MethodOptions:
+		w.WriteHeader(200)
+		return
+
 	//api should only accept POST request for logout
 	case http.MethodPost:
 		//variables to create cookie

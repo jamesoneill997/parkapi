@@ -38,6 +38,12 @@ func (user *Access) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	cors.SetupCORS(&w, r)
 
 	switch r.Method {
+
+	//handling CORS
+	case http.MethodOptions:
+		w.WriteHeader(200)
+		return
+
 	case http.MethodPost:
 		var access structs.Access
 

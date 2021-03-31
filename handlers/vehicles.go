@@ -38,6 +38,12 @@ func (user *Vehicle) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	cors.SetupCORS(&w, r)
 
 	switch r.Method {
+
+	//handling CORS
+	case http.MethodOptions:
+		w.WriteHeader(200)
+		return
+
 	case http.MethodGet:
 		claims, err := middleware.GetAuth(r)
 		if err != nil {

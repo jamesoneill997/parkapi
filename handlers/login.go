@@ -39,6 +39,12 @@ func (user *Login) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	//handle requests
 	switch r.Method {
+
+	//handling CORS
+	case http.MethodOptions:
+		w.WriteHeader(200)
+		return
+
 	//post is the only valid request for this endpoint
 	case http.MethodPost:
 		body, err := ioutil.ReadAll(r.Body)
