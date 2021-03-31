@@ -48,8 +48,8 @@ func main() {
 		Addr:         port,
 		Handler:      sm,
 		IdleTimeout:  120 * time.Second,
-		ReadTimeout:  2 * time.Second,
-		WriteTimeout: 4 * time.Second,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
 	}
 
 	//goroutine to listen the server
