@@ -32,6 +32,7 @@ func SetCookie(name string, token string, expiration time.Time, w http.ResponseW
 	http.SetCookie(w, &http.Cookie{
 		Name:    name,
 		Value:   token,
+		Path:    "/",
 		Expires: expiration,
 	})
 }

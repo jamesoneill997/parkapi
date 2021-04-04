@@ -13,7 +13,7 @@ import (
 /*GetAuth will check the current actor's cookie jar to see if there is a parkai token present*/
 func GetAuth(r *http.Request) (structs.Claims, error) {
 	// check current session cookies
-	c, err := r.Cookie("parkaitoken")
+	c, err := r.Cookie("ParkAIToken")
 
 	if err != nil {
 		// Unauthorised or bad request
