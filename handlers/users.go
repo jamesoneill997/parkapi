@@ -177,10 +177,11 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 			//send welcome email to user
 			middleware.WelcomeEmail(actor)
+			jsonUser, err := json.Marshal(actor)
 
 			//success
 			w.WriteHeader(http.StatusCreated)
-			w.Write([]byte("Resource Created Successfully"))
+			w.Write([]byte(fmt.Sprintf("%s", jsonUser)))
 			return
 
 		}
