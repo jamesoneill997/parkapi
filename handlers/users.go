@@ -54,7 +54,7 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			if err == jwt.ErrSignatureInvalid || err == http.ErrNoCookie || err.Error() == "InvalidToken" {
 				w.WriteHeader(http.StatusUnauthorized)
-				w.Write([]byte("Unauthorised"))
+				w.Write([]byte(fmt.Sprintf("%s", err)))
 				return
 			}
 			w.WriteHeader(http.StatusBadRequest)
