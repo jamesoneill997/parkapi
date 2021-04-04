@@ -325,7 +325,7 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		u.ID = currUserID
 		u.Email = claims.Email
 
-		//error here means we cannot identify user
+		//error here means we can't identify user
 		if err != nil {
 			logs.LogError(err)
 			w.WriteHeader(http.StatusInternalServerError)
