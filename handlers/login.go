@@ -10,6 +10,7 @@ import (
 
 	"github.com/jamesoneill997/parkapi/cors"
 	"github.com/jamesoneill997/parkapi/db"
+	"github.com/jamesoneill997/parkapi/initialise"
 	"github.com/jamesoneill997/parkapi/logs"
 	"github.com/jamesoneill997/parkapi/middleware"
 	"github.com/jamesoneill997/parkapi/structs"
@@ -83,7 +84,7 @@ func (user *Login) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 		uid := user["_id"]
 		//create new key
-		token, err := middleware.CreateJWT(uid.(primitive.ObjectID).Hex())
+		token, err := middleware.CreateJWT(uid.(primitive.ObjectID).Hex(), initialise.Ctx, initialise.Client)
 		if err != nil {
 			logs.LogError(err)
 			w.WriteHeader(http.StatusInternalServerError)
