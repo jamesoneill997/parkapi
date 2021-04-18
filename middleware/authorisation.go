@@ -30,7 +30,7 @@ func GetAuth(r *http.Request) (structs.Claims, error) {
 	}
 
 	//parse error return secret env variable
-	tkn, err := jwt.ParseWithClaims(tknStr, claims, func(token *jwt.Token) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(tknStr, claims.StandardClaims, func(token *jwt.Token) (interface{}, error) {
 		return []byte(os.Getenv("secret")), nil
 	})
 
