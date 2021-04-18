@@ -18,14 +18,14 @@ func GetAuth(r *http.Request) (structs.Claims, error) {
 	_, err := r.Cookie("ParkAIToken")
 	fmt.Println(r.Header.Get("Set-Cookie"))
 
-	// Get JWT string from cookie
-	tknStr := strings.Split(r.Header.Get("Set-Cookie"), "=")[1]
-	claims := &structs.Claims{}
-
 	if err != nil {
 		// Unauthorised or bad request
 		return structs.Claims{}, err
 	}
+
+	// Get JWT string from cookie
+	tknStr := strings.Split(r.Header.Get("Set-Cookie"), "=")[1]
+	claims := &structs.Claims{}
 
 	//parse error return secret env variable
 	tkn, err := jwt.ParseWithClaims(tknStr, claims, func(token *jwt.Token) (interface{}, error) {
