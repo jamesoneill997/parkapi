@@ -62,9 +62,7 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		fmt.Println(claims)
 		dbUser, err := db.GetUser(initialise.Ctx, initialise.Client, claims.Uid)
-		fmt.Println(dbUser)
 		bsonUser, err := bson.Marshal(dbUser)
 
 		bson.Unmarshal(bsonUser, &actor)

@@ -89,8 +89,19 @@ type Address struct {
 
 //Claims for authentication purposes (JWT)
 type Claims struct {
-	Uid   string `json: "uid" bson: "uid"`
-	Email string `json:"email" bson:"email"`
+	Uid            string    `json: "uid" bson: "uid"`
+	Email          string    `json:"email" bson:"email"`
+	Type           string    `json:"type" bson: "type"`
+	FirstName      string    `json:"firstName" bson:"firstName"`
+	Surname        string    `json:"surname" bson:"surname"`
+	Password       string    `json:"password" bson:"password"`
+	StripeID       string    `json:"stripeid" bson:"stripeid"`
+	AccountBalance float32   `json:"accountBalance" bson:"accountBalance"`
+	CarParks       []CarPark `json:"carparks" bson:"carparks"`
+	Vehicles       []Vehicle `json:"vehicles" bson:"vehicles"`
+	Access         Access    `json: "access" bson:"access"`
+	Created        time.Time `json:"created" bson:"created"`
+	Updated        time.Time `json:"updated" bson:"updated"`
 	jwt.StandardClaims
 }
 
