@@ -57,6 +57,7 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				w.Write([]byte(fmt.Sprintf("%s", err)))
 				return
 			}
+			fmt.Println(err)
 			w.WriteHeader(http.StatusBadRequest)
 			w.Write([]byte("Bad Request"))
 			return
