@@ -20,6 +20,7 @@ func GetAuth(r *http.Request) (structs.Claims, error) {
 
 	if err != nil {
 		// Unauthorised or bad request
+		fmt.Println(err)
 		return structs.Claims{}, err
 	}
 
