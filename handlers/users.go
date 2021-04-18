@@ -162,7 +162,7 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			db.InsertUser(initialise.Ctx, initialise.Client, actor)
 
 			//create json web token for auth
-			jwt, err := middleware.CreateJWT(actor.ID.Hex())
+			jwt, err := middleware.CreateJWT(actor.ID.Hex(), initialise.Ctx, initialise.Client)
 
 			if err != nil {
 				logs.LogError(err)
