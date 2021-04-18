@@ -33,6 +33,7 @@ func GetAuth(r *http.Request) (structs.Claims, error) {
 	})
 
 	if err != nil {
+		fmt.Println(err)
 		return structs.Claims{}, err
 
 	}
