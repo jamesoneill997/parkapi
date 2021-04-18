@@ -44,5 +44,5 @@ func GetAuth(r *http.Request) (structs.Claims, error) {
 		return structs.Claims{}, errors.New("InvalidToken")
 	}
 
-	return *claims, nil
+	return claims, nil
 }
