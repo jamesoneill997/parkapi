@@ -16,6 +16,8 @@ import (
 func GetAuth(r *http.Request) (structs.Claims, error) {
 	var tknStr string
 	var claims = structs.Claims{}
+	c := jwt.MapClaims{}
+
 	// check current session cookies
 	_, err := r.Cookie("ParkAIToken")
 
@@ -30,13 +32,13 @@ func GetAuth(r *http.Request) (structs.Claims, error) {
 	}
 
 	//parse error return secret env variable
-	tkn, err := jwt.ParseWithClaims(tknStr, claims.StandardClaims, func(token *jwt.Token) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(tknStr, c, func(token *jwt.Token) (interface{}, error) {
 		return []byte(os.Getenv("secret")), nil
 	})
 
 	if err != nil {
 		fmt.Println(err)
-		return structs.Claims{}, err
+		return claims, err
 
 	}
 	//unauthorised
