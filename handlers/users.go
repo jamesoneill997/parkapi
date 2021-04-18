@@ -47,6 +47,7 @@ func (user *User) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	//handles get requests
 	case http.MethodGet:
+		fmt.Println(r.GetBody())
 		//get authorisation
 		claims, err := middleware.GetAuth(r)
 
