@@ -24,7 +24,7 @@ func GetAuth(r *http.Request) (structs.Claims, error) {
 	if err != nil {
 		// Get JWT string from cookie
 		tknStrArr := strings.Split(r.Header.Get("Set-Cookie"), "=")
-		if len(tknStrArr) > 0 {
+		if len(tknStrArr) > 1 {
 			tknStr = tknStrArr[1]
 		} else {
 			return claims, err
