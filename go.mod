@@ -1,12 +1,5 @@
-module github.com/jamesoneill997/parkapi
+module parkapi
 
 go 1.15
 
-require (
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
-	github.com/sendgrid/rest v2.6.3+incompatible // indirect
-	github.com/sendgrid/sendgrid-go v3.8.0+incompatible
-	github.com/stripe/stripe-go v70.15.0+incompatible
-	go.mongodb.org/mongo-driver v1.5.1
-	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2
-)
+require github.com/jamesoneill997/parkapi v0.0.0-20210401132037-c99e127fa60d // indirect

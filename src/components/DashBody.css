@@ -1,0 +1,17 @@
+.body-container {
+    background: url('../assets/images/pexels-brett-sayles-1756957.jpg') center center/cover no-repeat; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+    z-index: -1;
+  }
+h1{
+    color: #00ffee;
+    font-size: 64px;
+    margin-top:-800px;
+}

@@ -1,0 +1,60 @@
+form{
+    height:600px;
+    width: 600px;
+    padding:20px;
+    background-color: rgba(0,0,0,0.5);
+    border-color: #00ffee;
+    border-style: solid;
+    border-radius: 25px;
+    text-align: center;
+    display: inline-block;
+}
+
+form h3{
+    font-size: 30px;
+    color:#00ffee;
+    margin-bottom:20px;
+}
+
+.form-group{
+    font-size: 16px;
+    color:white;
+}
+
+label {
+    width:180px;
+    clear:left;
+    text-align:right;
+    margin-right:45px;
+    margin-bottom:15px;
+}
+
+input, label, select, .forgot-password.text-right{
+    float:left;
+}
+
+.forgot-password.text-right{
+    color:white;
+
+}
+
+p a{
+    color:#00ffee;
+}
+
+.form-end{
+    float:right;
+    margin-top:50px;
+}
+
+
+.button-container{
+    float:left;
+    margin-top: 100px;
+    margin-right:30%;
+}
+
+.btn.btn-primary.btn-block:hover{
+    background-color: #00ffee;
+    transition: 1000ms;
+}

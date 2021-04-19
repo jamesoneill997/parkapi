@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"net/http"
 	"os"
@@ -27,16 +26,15 @@ func CreateJWT(ID string, ctx context.Context, client *mongo.Client) (string, er
 	bsonUser, err := bson.Marshal(dbUser)
 
 	bson.Unmarshal(bsonUser, &actor)
-	jsonUser, err := json.Marshal(actor)
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println(jsonUser)
-
 	claims := &structs.Claims{
-		Uid: ID,
+		Uid:   ID,
+		Email: actor.Email,
+
 		StandardClaims: jwt.StandardClaims{
 			// In JWT, the expiry time is expressed as unix milliseconds
 			ExpiresAt: expire.Unix(),
